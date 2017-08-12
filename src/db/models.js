@@ -5,15 +5,28 @@ export const User = mongoose.model('user', {
   email: {
     type: String,
     unique: true
+  },
+  displayName: String
+})
+
+export const Project = mongoose.model('project', {
+  name: String,
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   }
 })
 
-export const Code = mongoose.model('code', {
+export const Kode = mongoose.model('kode', {
   message: String,
   fileName: String,
   lineNumber: String,
   hash: String,
   code: String,
   line: String,
-  preview: String
+  preview: String,
+  project: {
+    type: Schema.Types.ObjectId,
+    ref: 'Project'
+  }
 })

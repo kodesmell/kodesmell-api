@@ -14,7 +14,7 @@ import schema from 'api/schema'
 
 const PORT = 8000
 
-
+// ;) 대문자를 사용하자 (#2169fba)
 let app = express();
 app.use(morgan('dev'))
 app.use(cors());
@@ -25,6 +25,7 @@ app.use('/graphiql', graphiqlExpress({
   endpointURL: '/graphql',
 }));
 
+// ;) Can remove body parser here! (#583d0aa)
 app.use(
   '/graphql',
   bodyParser.json(),
