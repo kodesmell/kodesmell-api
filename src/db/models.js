@@ -10,11 +10,7 @@ export const User = mongoose.model('user', {
 })
 
 export const Project = mongoose.model('project', {
-  name: String,
-  owner: {
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  }
+  name: String
 })
 
 export const Kode = mongoose.model('kode', {

@@ -2,6 +2,9 @@ import {
   makeExecutableSchema
 } from 'graphql-tools'
 
+// kode {}
+// project {}
+
 const typeDefs = `
   type User {
     id: ID!
@@ -33,15 +36,12 @@ const typeDefs = `
     lineNumber: Int!
   }
 
-  input CreateKodeInput {
-    kodes: [KodeInput],
-    project: ID!
-  }
-
   input CreateProjectInput {
     name: String!
-    username: String!
-    email: String!
+  }
+
+  input CreateKodesInput {
+    kodes: [KodeInput]
   }
 
   type Query {
@@ -50,7 +50,7 @@ const typeDefs = `
   }
 
   type Mutation {
-    createKode(input: CreateKodeInput): [Kode],
+    createKodes(input: CreateKodesInput): [Kode],
     createProject(input: CreateProjectInput): Project
   }
 `
@@ -71,16 +71,11 @@ const resolvers = {
     }
   },
   Mutation: {
-    createKode: async (_, { input }, { models }) => {
-      let { kodes, project } = input
-      let projectId = await models.Project.findOne({ name: project })
+    createKodes: async (_, { input }, { models }) => {
 
-      let ready = kodes.map(k => {
-        k.project = projectId
-        return k;
-      })
+      let { kodes } = input
 
-      return models.Kode.insertMany(ready)
+      return models.Kode.insertMany(kodes)
     },
     createProject: async (_, { input }, { models }) => {
       let { username, email, name } = input

@@ -6,7 +6,8 @@
   "author": "JaeKwon Han <hanjaekwon@icloud.com>",
   "license": "MIT",
   "scripts": {
-    "build": "babel src/ --watch -d lib/",
+    "build": "babel src/ -d lib/",
+    "build:watch": "babel src/ --watch d lib/",
     "start": "nodemon --watch lib lib/server.js"
   },
   "dependencies": {
