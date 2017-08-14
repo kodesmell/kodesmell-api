@@ -6,9 +6,10 @@
   "author": "JaeKwon Han <hanjaekwon@icloud.com>",
   "license": "MIT",
   "scripts": {
-    "build": "babel src/ -d lib/",
+    "build": "npm install && babel src/ -d lib/",
     "build:watch": "babel src/ --watch d lib/",
-    "start": "nodemon --watch lib lib/server.js"
+    "dev": "nodemon --watch lib lib/server.js",
+    "start": "NODE_ENV=production node lib/server.js"
   },
   "dependencies": {
     "apollo-server-express": "^1.1.0",

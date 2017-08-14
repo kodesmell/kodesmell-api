@@ -8,7 +8,7 @@ GraphQL Backend for kodesmell
 # Install Guide
 1. `git clone` this repository
 2. `cd kodesmell-api`
-3. `npm build`
+3. `npm run build`
 4. `npm start`
 
 # How to Use
